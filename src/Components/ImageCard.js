@@ -1,38 +1,40 @@
 import React from 'react';
 
-const ImageCard = () => {
+const ImageCard = ( {image} ) => {
+  const tags = image.tags.split(',');
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img src="https://wallpaperaccess.com/full/1391981.jpg" alt="" className="w-full" /> 
+      <img src={image.webformatURL} alt="" className="w-full" /> 
       <div className="px-6 py-4">
         <div className="mx-auto font-bold text-purple-500 text-lg mb-2">
-          Photo of Swan
+          Photo by {image.user}
         </div>
         <ul>
           <li>
             <strong>Views: </strong>
-            5000
+            {image.views}
           </li>
           <li>
             <strong>Downloads: </strong>
-            300
+            {image.downloads}
           </li>
           <li>
             <strong>Likes: </strong>
-            400
+            {image.likes}
           </li>
         </ul>
+        <button className="bg-green-400 hover:bg-blue-500 hover:text-white py-1 px-2 rounded">
+        <a href={image.userImageURL} target="_blank" rel="noopener noreferrer"> View Photographer</a>
+        </button>
       </div>
       <div className="px-6 py-4">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-          #tag1
+        {
+          tags.map((tag, index) =>(
+            <span key = {index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+          #{tag}
         </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-          #tag2
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-          #tag3
-        </span>
+          ))
+        }
       </div>
     </div>
     );
