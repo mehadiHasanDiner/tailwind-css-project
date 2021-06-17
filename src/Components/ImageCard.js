@@ -11,7 +11,7 @@ const ImageCard = () => {
         <ul>
           <li>
             <strong>Views: </strong>
-            4000
+            5000
           </li>
           <li>
             <strong>Downloads: </strong>
